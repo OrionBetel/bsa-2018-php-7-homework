@@ -2,6 +2,17 @@
 
 namespace App\Entity;
 
-class Money
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Money extends Model
 {
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
+
+    public function wallet()
+    {
+        return $this->belongsTo('App\Entity\Wallet');
+    }
 }

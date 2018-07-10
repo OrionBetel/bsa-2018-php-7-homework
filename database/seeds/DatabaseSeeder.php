@@ -11,6 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        factory(App\Entity\Currency::class, 10)->create();
+        
+        factory(App\Entity\User::class, 100)->create();
+        
+        factory(App\Entity\Wallet::class, 100)->create();
+
+        factory(App\Entity\Money::class, 500)->create();
     }
 }
