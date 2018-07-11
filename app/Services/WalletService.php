@@ -17,11 +17,33 @@ class WalletService implements WalletServiceInterface
 
     public function create(CreateWalletRequest $request): Wallet
     {
+        $userId = $request->getUserId();
+        
+        $user = Wallet::where('user_id', $userId)->get();
 
+        if (count($user)) {
+            throw new \LogicException('The user already has wallet.');
+        }
+        
+        $wallet = new Wallet;
+        
+        $wallet->user_id = $userId;
+
+        $wallet->save();
+
+        return $wallet;
     }
 
     public function findCurrencies(int $walletId): Collection
     {
+        $currencies = [];
+        
+        $money = Wallet::find($walletId)->money;
 
+        foreach ($money as $item) {
+            $currencies[] = $item->currency;
+        }
+
+        return collect($currencies);
     }
 }

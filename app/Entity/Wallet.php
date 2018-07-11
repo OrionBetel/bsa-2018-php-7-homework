@@ -16,7 +16,7 @@ class Wallet extends Model
         return $this->belongsTo('App\Entity\User');
     }
 
-    public function currency()
+    public function money()
     {
         return $this->hasMany('App\Entity\Money');
     }
