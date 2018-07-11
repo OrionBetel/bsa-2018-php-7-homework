@@ -27,5 +27,15 @@ class AppServiceProvider extends ServiceProvider
             'App\Services\CurrencyServiceInterface',
             'App\Services\CurrencyService'
         );
+
+        $this->app->bind(
+            'App\Services\UserServiceInterface',
+            'App\Services\UserService'
+        );
+
+        $this->app->bind(
+            'App\Services\WalletServiceInterface',
+            'App\Services\WalletService'
+        );
     }
 }
