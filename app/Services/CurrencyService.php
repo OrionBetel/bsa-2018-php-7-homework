@@ -9,11 +9,7 @@ class CurrencyService implements CurrencyServiceInterface
 {
     public function create(CreateCurrencyRequest $request): Currency
     {
-        $currency = new Currency();
-
-        $currency->name = $request->getName();
-
-        $currency->save();
+        $currency = Currency::firstOrCreate(['name' => $request->getName()]);
 
         return $currency;
     }
