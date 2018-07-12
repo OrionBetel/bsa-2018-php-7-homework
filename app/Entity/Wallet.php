@@ -9,6 +9,8 @@ class Wallet extends Model
 {
     use SoftDeletes;
 
+    protected $table = 'wallet';
+    
     protected $dates = ['deleted_at'];
 
     public function user()
