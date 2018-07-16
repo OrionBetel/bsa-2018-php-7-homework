@@ -24,8 +24,6 @@ class MoneyService implements MoneyServiceInterface
 
     public function maxAmount(): float
     {
-        $maxAmount = Money::all()->max('amount');
-
-        return $maxAmount;
+        return Money::max('amount');
     }
 }
