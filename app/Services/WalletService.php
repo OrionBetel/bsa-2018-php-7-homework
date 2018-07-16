@@ -36,7 +36,7 @@ class WalletService implements WalletServiceInterface
     {
         $currencies = [];
         
-        $money = Wallet::find($walletId)->money;
+        $money = Wallet::with('money.currency')->find($walletId)->money;
 
         foreach ($money as $item) {
             $currencies[] = $item->currency;
