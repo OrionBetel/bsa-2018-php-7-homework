@@ -15,9 +15,7 @@ class UserService implements UserServiceInterface
 
     public function findById(int $id): ?User
     {
-        $user = User::find($id);
-
-        return $user ?? null;
+        return User::find($id);
     }
 
     public function save(SaveUserRequest $request): User
@@ -33,5 +31,7 @@ class UserService implements UserServiceInterface
     public function delete(int $id): void
     {
         User::destroy($id);
+        // Also this statement deletes user's wallet(s).
+        // It's specified in wallet table migration.
     }
 }
