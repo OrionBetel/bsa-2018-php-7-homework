@@ -18,11 +18,9 @@ class WalletService implements WalletServiceInterface
     public function create(CreateWalletRequest $request): Wallet
     {
         $userId = $request->getUserId();
-        
-        $user = Wallet::where('user_id', $userId)->get();
 
-        if (count($user)) {
-            throw new \LogicException('The user already has wallet.');
+        if (Wallet::where('user_id', $userId)->first()) {
+            throw new \LogicException('The user already has a wallet.');
         }
         
         $wallet = new Wallet;
