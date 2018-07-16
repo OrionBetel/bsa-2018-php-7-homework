@@ -11,12 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Entity\Currency::class, 10)->create();
+        factory(App\Entity\Currency::class, 5)->create();
         
-        factory(App\Entity\User::class, 100)->create();
+        factory(App\Entity\User::class, 10)->create();
         
-        factory(App\Entity\Wallet::class, 100)->create();
+        factory(App\Entity\Wallet::class, 10)->create();
 
-        factory(App\Entity\Money::class, 500)->create();
+        factory(App\Entity\Money::class, 50)->create();
     }
 }

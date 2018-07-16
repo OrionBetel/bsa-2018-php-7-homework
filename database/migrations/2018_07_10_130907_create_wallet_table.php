@@ -19,6 +19,10 @@ class CreateWalletTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        Schema::table('wallet', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade');
+        });
     }
 
     /**

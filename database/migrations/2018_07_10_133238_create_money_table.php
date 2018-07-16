@@ -21,6 +21,11 @@ class CreateMoneyTable extends Migration
             $table->timestamps();
             $table->softDeletes();            
         });
+
+        Schema::table('money', function (Blueprint $table) {
+            $table->foreign('currency_id')->references('id')->on('currency');
+            $table->foreign('wallet_id')->references('id')->on('wallet')->onDelete('cascade');
+        });
     }
 
     /**
