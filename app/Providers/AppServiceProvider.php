@@ -4,6 +4,16 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use App\Services\CurrencyServiceInterface;
+use App\Services\MoneyServiceInterface;
+use App\Services\UserServiceInterface;
+use App\Services\WalletServiceInterface;
+
+use App\Services\CurrencyService;
+use App\Services\MoneyService;
+use App\Services\UserService;
+use App\Services\WalletService;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,23 +34,23 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'App\Services\CurrencyServiceInterface',
-            'App\Services\CurrencyService'
+            CurrencyServiceInterface::class,
+            CurrencyService::class
         );
 
         $this->app->bind(
-            'App\Services\UserServiceInterface',
-            'App\Services\UserService'
+            MoneyServiceInterface::class,
+            MoneyService::class
         );
 
         $this->app->bind(
-            'App\Services\WalletServiceInterface',
-            'App\Services\WalletService'
+            UserServiceInterface::class,
+            UserService::class
         );
 
         $this->app->bind(
-            'App\Services\MoneyServiceInterface',
-            'App\Services\MoneyService'
+            WalletServiceInterface::class,
+            WalletService::class
         );
     }
 }
